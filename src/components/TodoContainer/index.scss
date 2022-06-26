@@ -1,0 +1,50 @@
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin: 40px auto 70px;
+    padding: 24px 18px;
+
+    width: 100%;
+    height: 100%;
+
+    flex: 1 1 1px;
+
+
+
+
+    min-height: 500px;
+    max-width: 1200px;
+    max-height: 100%;
+
+    border-radius: 9px;
+    border: 1px;
+
+}
+
+.todo-container_dark {
+    background-color: #2C4550;
+    border: 1px solid #2C4550;
+}
+
+.todo-container_light {
+    background: rgba(227, 242, 249, 0.7);
+    border: 1px solid #ADD0DF;
+}
+
+.todo-container__header {
+    margin: 0 0 10px;
+}
+
+.todo-container__columns-parent {
+    flex: 1 1 1px;
+    display: flex;
+    justify-content: center;
+    flex-flow:row wrap;
+    min-width: 0;
+    gap: 30px;
+
+
+    scrollbar-color: #2C4550;
+    transition: scrollbar-color 0.3s ease-out;
+}

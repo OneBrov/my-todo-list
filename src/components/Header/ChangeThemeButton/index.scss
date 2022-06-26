@@ -1,0 +1,21 @@
+
+.theme-images {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 24px;
+    height: 24px;
+
+}
+
+.theme-images_dark {
+    &:hover {
+        filter: brightness(60%);
+    }
+}
+
+.theme-images_light {
+    &:hover {
+        opacity: 0.4;
+    }
+}

@@ -1,0 +1,51 @@
+
+.column__header {
+    display: flex;
+    
+    position: sticky;
+
+
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    flex: 0 1 1px;
+
+
+
+}
+
+.header__input {
+    display: flex;
+
+ 
+    width: 100%;
+    max-width: 200px;
+    flex: 1 1 1px;  
+    height: 30px;
+    padding: 0 8px;
+
+    text-align: center;
+
+    background: #F5F5F5;
+    border-radius: 8px;
+    border: none;
+
+    &::placeholder {
+        color: inherit;
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+    &:focus-visible::placeholder {
+        opacity: 0.2;
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+.header__button {
+    flex: 0 1 1px
+}

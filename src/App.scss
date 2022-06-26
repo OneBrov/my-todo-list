@@ -1,0 +1,32 @@
+.App {
+  transition: background-color 0.2s linear;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.App_dark {
+  background: #1E2D33 linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 5e-05) 49.88%, rgba(0, 0, 0, 0.5) 100%);
+  background-color: #1E2D33;
+  color: #fff;
+}
+
+.App_light {
+  background: #ECF9FF linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1e-05) 49.88%, rgba(0, 0, 0, 0.1) 100%);
+  background-color: #ECF9FF;
+  color: #000;
+}
+
+.button {
+  background: inherit;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(70%);
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
