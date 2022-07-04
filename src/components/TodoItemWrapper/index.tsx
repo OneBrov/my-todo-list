@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { ThemeContext } from '../../App';
 import { Todo, TodoContext, TodoType } from '../TodoContainer/TodoContext';
 
@@ -10,10 +10,10 @@ interface TodoItemWrapperProps {
 }
 
 export const TodoItemWrapper:React.FC<TodoItemWrapperProps> = ({
-    children,
-    todoType,
-    todo,
-    isInputDisabled
+  children,
+  todoType,
+  todo,
+  isInputDisabled
 }) => {
 
   const {theme} = React.useContext(ThemeContext);
@@ -50,6 +50,7 @@ export const TodoItemWrapper:React.FC<TodoItemWrapperProps> = ({
     item.style.zIndex = '1000';
     item.style.cursor = 'grabbing';
 
+    moveAt(event.pageX, event.pageY);
     //move element to x, y
     function moveAt(pageX: number, pageY: number) {
       item.style.left = pageX - shiftX + 'px';
@@ -88,20 +89,20 @@ export const TodoItemWrapper:React.FC<TodoItemWrapperProps> = ({
     setMoveMoveFunction(mouseMoveFunction);
 
     function enterDroppable(elem: HTMLElement) {
-        //get value from attribute of droppable element
-        const tType = elem.getAttribute('data-todotype') as TodoType;
-        setTargetType(tType);
+      //get value from attribute of droppable element
+      const tType = elem.getAttribute('data-todotype') as TodoType;
+      setTargetType(tType);
 
-        //highlight droppable element
-        elem.style.boxShadow = '-0px -0px 10px #418179, 0px 0px 10px #71e1d3';
+      //highlight droppable element
+      elem.style.boxShadow = '-0px -0px 10px #418179, 0px 0px 10px #71e1d3';
 
-      }
+    }
     
-      function leaveDroppable(elem: HTMLElement) {
-        //remove highlight
-        elem.style.boxShadow= 'none';
-        setTargetType(undefined)
-      }
+    function leaveDroppable(elem: HTMLElement) {
+      //remove highlight
+      elem.style.boxShadow= 'none';
+      setTargetType(undefined);
+    }
     
   }
 
@@ -130,14 +131,15 @@ export const TodoItemWrapper:React.FC<TodoItemWrapperProps> = ({
   }
 
   return (
-    <div 
-        ref={todoItemRef}  
-        className={`column__item ${theme === 'dark' ? 'column__item_dark' : 'column__item_light'}`}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onDragStart={()=>false}
+    <article 
+      id='todo-item'
+      ref={todoItemRef}  
+      className={`item ${theme === 'dark' ? 'item_dark' : 'item_light'}`}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onDragStart={()=>false}
     >
-        {children}
-    </div>
-  )
-}
+      {children}
+    </article>
+  );
+};

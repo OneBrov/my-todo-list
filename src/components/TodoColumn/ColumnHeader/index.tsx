@@ -1,6 +1,6 @@
-import React, {KeyboardEvent} from 'react'
-import './index.scss'
-import plus from '../../../assets/plus.svg'
+import React, {KeyboardEvent} from 'react';
+import './index.scss';
+import plus from '../../../assets/plus.svg';
 import { TodoContext, TodoType } from '../../TodoContainer/TodoContext';
 
 export interface ColumnHeaderProps {
@@ -8,25 +8,24 @@ export interface ColumnHeaderProps {
     todoType: TodoType
 }
 
-
 export const ColumnHeader:React.FC<ColumnHeaderProps> = ({
-    header,
-    todoType,
+  header,
+  todoType,
 }) => {
 
-  const [todoText, setTodoText] = React.useState<string>('')
+  const [todoText, setTodoText] = React.useState<string>('');
 
-  const { addTodo } = React.useContext(TodoContext)
+  const { addTodo } = React.useContext(TodoContext);
 
   function handleAddTodo() {
     if (!todoText) return;
 
-    console.log('addTODO!!')
+    console.log('addTODO!!');
 
     const now = new Date();
-    addTodo(todoType, {text: todoText, createAt: now.toString(), id: performance.now()})
+    addTodo(todoType, {text: todoText, createAt: now.toString(), id: performance.now()});
 
-    setTodoText('')
+    setTodoText('');
   }
 
 
@@ -37,9 +36,16 @@ export const ColumnHeader:React.FC<ColumnHeaderProps> = ({
   }
 
   return (
-    <div className='column__header'>
-        <input placeholder={header} value={todoText} onKeyDown={handleEnterPress} onChange={(e) => setTodoText(e.target.value)} className='header__input' />
-        <img onClick={handleAddTodo} className='header__button button' src={plus} width={24} height={24} alt={'Add todo task'}/>
-    </div>
-  )
-}
+    <section className='column__header'>
+      <input 
+        aria-label={`column ${todoType} create new task`}
+        className='header__input' 
+        placeholder={header} 
+        value={todoText} 
+        onKeyDown={handleEnterPress} 
+        onChange={(e) => setTodoText(e.target.value)} 
+      />
+      <img onClick={handleAddTodo} className='header__button button' src={plus} width={24} height={24} alt={'Add todo task'}/>
+    </section>
+  );
+};

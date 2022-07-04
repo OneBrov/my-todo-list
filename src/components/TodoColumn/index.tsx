@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import './index.scss'
+import './index.scss';
 
-import { TodoItem } from '../TodoItem'
-import { ThemeContext } from '../../App'
-import { ColumnHeader } from './ColumnHeader'
-import { TodoContext, TodoType } from '../TodoContainer/TodoContext'
+import { TodoItem } from '../TodoItem';
+import { ThemeContext } from '../../App';
+import { ColumnHeader } from './ColumnHeader';
+import { TodoContext, TodoType } from '../TodoContainer/TodoContext';
 
 
 export interface TodoColumnProps {
@@ -14,7 +14,7 @@ export interface TodoColumnProps {
 }
 
 export const TodoColumn:React.FC<TodoColumnProps> = ({
-    header, todoType, 
+  header, todoType, 
 }) => {
 
   const {theme} = React.useContext(ThemeContext);
@@ -22,23 +22,23 @@ export const TodoColumn:React.FC<TodoColumnProps> = ({
 
   const todoList = React.useContext(TodoContext).todos[todoType];
   return (
-    <div
+    <article
       data-todotype={todoType}
       className={[
-          'todo-container__column', 
-          ...[theme === 'dark' ? 'todo-container__column_dark' : 'todo-container__column_light'],
-          ...[isTodoDragging && 'column_droppable' ]
-        ].join(' ')
+        'column', 
+        ...[theme === 'dark' ? 'column_dark' : 'column_light'],
+        ...[isTodoDragging && 'column_droppable' ]
+      ].join(' ')
       }
     >
-        <ColumnHeader header={header} todoType={todoType} />
-        <div className='column__items'>
-            {todoList.map(todo => 
-               <TodoItem key={todo.id} todo={todo} todoType={todoType}/> 
-            )}
+      <ColumnHeader header={header} todoType={todoType} />
+      <section className='column__items'>
+        {todoList.map(todo => 
+          <TodoItem key={todo.id} todo={todo} todoType={todoType}/> 
+        )}
             
-        </div>
+      </section>
 
-    </div>
-  )
-}
+    </article>
+  );
+};

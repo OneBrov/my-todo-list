@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react'
+import React, { Suspense } from 'react';
 
-import './index.scss'
+import './index.scss';
 import more from '../../assets/more.svg';
 import edit from '../../assets/edit.svg';
 import trash from '../../assets/trash.svg';
@@ -64,7 +64,7 @@ export const TodoItem:React.FC<TodoItemProps> = ({
   }
 
   function handlePreventDragging(e: React.MouseEvent) {
-    e.stopPropagation()
+    e.stopPropagation();
   } 
 
 
@@ -76,9 +76,9 @@ export const TodoItem:React.FC<TodoItemProps> = ({
     const now = new Date();
     const days = Math.floor((now.getTime() - new Date(todo.createAt).getTime()) / 86400000);
     if (days === 1) {
-      return `${days} day ago`
+      return `${days} day ago`;
     }
-    return `${days} days ago`
+    return `${days} days ago`;
   }
 
   return (
@@ -102,38 +102,41 @@ export const TodoItem:React.FC<TodoItemProps> = ({
           <p>{todo.text}</p>
         </div>
       </div>
-
       <input 
+        id={todo.id.toString()}
+        aria-label='todo item current text'
         className='item__text' 
         ref={inputRef} 
         disabled={isInputDisabled} 
+        type='text'
+        name='todo-text'
         value={todo.text} 
         onChange={handleTodoEdit} 
         onBlur={handleEndEditing} 
         onKeyDown={handleEnterDown}
       />
-
+    
       <div className='item__images'>
-          <img 
-            className={`button item__button item__button_edit ${!isInputDisabled ? 'item__button_editing' :''}`} 
-            src={edit} 
-            width={16} 
-            height={16} 
-            alt={'Edit task'}
-            onClick={handleStartEditing} 
-            onMouseDown={handlePreventDragging}
-          />
-          <img 
-            className='button item__button item__button_trash' 
-            src={trash} 
-            width={16} 
-            height={16} 
-            alt={'Delete task'}
-            onClick={handleDeleteClick}  
-            onMouseDown={handlePreventDragging}
-          />
+        <img 
+          className={`button item__button item__button_edit ${!isInputDisabled ? 'item__button_editing' :''}`} 
+          src={edit} 
+          width={16} 
+          height={16} 
+          alt={'Edit task'}
+          onClick={handleStartEditing} 
+          onMouseDown={handlePreventDragging}
+        />
+        <img 
+          className='button item__button item__button_trash' 
+          src={trash} 
+          width={16} 
+          height={16} 
+          alt={'Delete task'}
+          onClick={handleDeleteClick}  
+          onMouseDown={handlePreventDragging}
+        />
       </div>
     </TodoItemWrapper>
 
-  )
-}
+  );
+};

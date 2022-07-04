@@ -1,5 +1,4 @@
-.todo-container__column {
-    
+.column {
     flex: 1 1 30%;
     min-width: 0;
     min-height: 0;
@@ -15,18 +14,26 @@
 
     overflow-y: auto;
     overflow-x: hidden;
-
-   
 }
 
-.todo-container__column_dark {
+.column_dark {
     background: #546E79;
     border: 1px solid #546E79;
 }
 
-.todo-container__column_light {
+.column_light {
     background: #BAD9E6;
     border: 1px solid #A6CAD8;
+}
+
+.column__header {
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    flex: 0 1 1px;
 }
 
 .column__items {
